@@ -17,14 +17,14 @@ ForEach ( $UserObject in $UserObjects ) {
     $Name = $User.'DisplayName'
     
     if ($PwdSet -eq $CreationDate) {
-        Write-Host ("Password has not been reset")
+        Write-Host ("Password has not been reset") -ForegroundColor Red
     }
     else {
-        Write-Host "$Name  was created on: $CreationDate" -Verbose
+        Write-Host "$Name  was created on: $CreationDate" 
         Write-Host "Account Password last set on: $PwdSet"
 
         if ($pwdset -ge $CreationDate) {
-            Write-Host "Account password has been changed. `n" -ForegroundColor Red
+            Write-Host "Account password has been changed. `n" -ForegroundColor Green
         }
     }
 } 
