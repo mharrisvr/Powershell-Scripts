@@ -1,10 +1,8 @@
 # Password update checker
-# 7-27-2021
-# This scripts checks a CSV file of names against AD to see if the account password has been changed since the account has been created and reports back. 
 
 Import-Module ActiveDirectory
 
-$UserObjects = Import-CSV -Path #Insert your path here
+$UserObjects = Import-CSV -Path C:\users\mharrisadmin\desktop\scripts\newhire.csv
 
 #Write-Host $userObjects
 Write-Verbose -Message "Checking to see if passwords have been changed.. `n" -Verbose
@@ -12,19 +10,19 @@ Write-Verbose -Message "Checking to see if passwords have been changed.. `n" -Ve
 ForEach ( $UserObject in $UserObjects ) {
 
     $User = Get-ADUSer $UserObject.Name -Properties *
-    $CreationDate = $User.'Created'
-    $PwdSet = $User.'passwordlastset'
+    $ts = New-TimeSpan -Seconds 2 #Had to add to time to make comparison check work. 
+    $CreationDate = $User.'Created' + $ts 
+    $PwdSet = $User.'PasswordLastSet' 
     $Name = $User.'DisplayName'
     
-    if ($PwdSet -eq $CreationDate) {
-        Write-Host ("Password has not been reset") -ForegroundColor Red
+    if ($PwdSet -gt $CreationDate) {
+        Write-Host "$Name was created on: $CreationDate" 
+        Write-Host "Account Password last set on: $PwdSet" 
+        Write-Host "Account password has been changed. `n" -ForegroundColor Green      
     }
     else {
-        Write-Host "$Name  was created on: $CreationDate" 
+        Write-Host "$Name was created on: $CreationDate" 
         Write-Host "Account Password last set on: $PwdSet"
-
-        if ($pwdset -ge $CreationDate) {
-            Write-Host "Account password has been changed. `n" -ForegroundColor Green
+        Write-Host ("Password has not been reset `n") -ForegroundColor Red 
         }
     }
-} 
