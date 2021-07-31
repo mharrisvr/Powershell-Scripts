@@ -6,7 +6,7 @@
 
 #Function Get-TeamsStatus {
 
-    Write-Host 
+
     $usr = Read-Host -Prompt "Enter Username" #Prompt for username
 
     #Creates usr object will all properties of Get-ADUser
@@ -16,25 +16,25 @@
     $trgtAddress = "SMTP:"+$usr+"@dcscorporation.mail.onmicrosoft.com"
     $UsrName = $UserInfo.'Name'
 
-    Write-Host #Adds blank line between username prompt & Output 
+    Write-Output #Adds blank line between username prompt & Output 
 
     if ($0365Status -ne '$trgtAddress') {
-        Write-Host '0365 Status: ' $UserInfo.'targetAddress'
+        Write-Output '0365 Status: ' $UserInfo.'targetAddress'
        } else {
-        Write-Host '0365 Status: Not Migrated'
+        Write-Output '0365 Status: Not Migrated'
         }
 
-    Write-Host "Teams Status:" $UserInfo.'msRTCSIP-DeploymentLocator'
+    Write-Output "Teams Status:" $UserInfo.'msRTCSIP-DeploymentLocator'
  
     #Check to see if user has been migrated to Teams by checking msRTCSIP-DeploymentLocator property
     if ($UserInfo.'msRTCSIP-DeploymentLocator' -eq 'sipfed.online.gov.skypeforbusiness.us') {
-        Write-Host
-        Write-Host $usrName "is moved to Office 365 and MS Teams" 
-        Write-Host
+        Write-Output
+        Write-Output $usrName "is moved to Office 365 and MS Teams" 
+        Write-Output
     } else {
-       Write-Host
-       Write-Host $usrName "is not moved to Teams yet."
-       Write-Host
+       Write-Output
+       Write-Output $usrName "is not moved to Teams yet."
+       Write-Output
     }
 
 
