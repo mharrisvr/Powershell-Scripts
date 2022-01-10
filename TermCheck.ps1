@@ -5,9 +5,9 @@ Import-Module ActiveDirectory
 
 $employeeIDs = @('1','2','3')                
 
-$PendingTerms = @('4','5','6')               # Was just a holding place to keep track
+$PendingTerms = @('4','5','6')                       # Was just a holding place to keep track
 
-$SuccesfullyTermedUsers = @('1')             #This was just to keep track of the ones that I had verified; has to be manually updated / copy & pasted      
+$SuccesfullyTermedUsers = @('7','8','9')             #This was just to keep track of the ones that I had verified; has to be manually updated / copy & pasted      
 
 Write-Host "`n....Checking EmployeeIDs`n" -ForegroundColor Green
 
