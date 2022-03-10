@@ -1,6 +1,7 @@
 ##===================================================================================================##
 ## SCCM-ClientRepair.ps1
 ## Purpose: Repair SCCM Client
+## Still needs a little tweaking... few services still need to be manually re-created
 ## 
 ##===================================================================================================##
 
