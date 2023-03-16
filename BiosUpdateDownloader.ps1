@@ -14,7 +14,6 @@ $UrlList = @(
       'https://dl.dell.com/FOLDER09581651M/1/Precision_5470_1_11_0.exe'
       )
 
-
 # File Downloader
 Foreach ($Url in $UrlList) {
     Start-BitsTransfer -Source $Url -Destination $DownloadDirectory
