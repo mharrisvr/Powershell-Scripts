@@ -11,8 +11,8 @@ foreach ($User in $ADUsers)
        $Password    = $User.password
        $Firstname   = $User.firstname
        $Lastname    = $User.lastname
-    $Department = $User.department
-       $OU           = $User.ou
+       $Department  = $User.department
+       $OU          = $User.ou
 
        #Check if the user account already exists in AD
        if (Get-ADUser -F {SamAccountName -eq $Username})
