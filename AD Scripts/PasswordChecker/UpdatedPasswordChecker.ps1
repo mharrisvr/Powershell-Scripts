@@ -2,7 +2,7 @@
 
 Import-Module ActiveDirectory
 
-$UserObjects = Import-CSV -Path C:\users\mharrisadmin\desktop\scripts\newhire.csv
+$UserObjects = Import-CSV -Path C:\users\username\desktop\scripts\newhire.csv
 
 #Write-Host $userObjects
 Write-Verbose -Message "Checking to see if passwords have been changed.. `n" -Verbose
