@@ -1,0 +1,8 @@
+#Purpose: Needed to get all the members of random groups and generate list of computers 
+
+$Group = Get-ADGroup -filter "name -like '*random*'"
+$name =$Group.name
+$Computers = Get-ADGroupMember -Identity $name | Select Name | Sort -Property Name | FT -AutoSize 
+
+# Outputs total list of names 
+$Computers 
