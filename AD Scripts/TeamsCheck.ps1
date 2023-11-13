@@ -13,7 +13,7 @@
     $UserInfo = Get-ADUser -Identity $usr -properties * # Creates Object storing all properties of Get-ADUser
  
     $0365Status = $UserInfo.'targetAddress'
-    $trgtAddress = "SMTP:"+$usr+"@dcscorporation.mail.onmicrosoft.com"
+    $trgtAddress = "SMTP:"+$usr+"@email.domain"
     $UsrName = $UserInfo.'Name'
 
     Write-Output #Adds blank line between username prompt & Output 
